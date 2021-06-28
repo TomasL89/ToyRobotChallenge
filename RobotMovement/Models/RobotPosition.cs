@@ -21,13 +21,14 @@ namespace RobotMovement.Models
             var newXCoord = Position.Item1 + xCoord;
             var newYCoord = Position.Item2 + yCoord;
 
-            if (newXCoord > tableTopLimit.Item1 || newYCoord > tableTopLimit.Item2)
+            if (newXCoord > tableTopLimit.Item1 || newYCoord > tableTopLimit.Item2 || newXCoord < 0 || newYCoord < 0)
             {
                 IsOffTable = true;
                 Position = new Tuple<int, int>(0, 0);
                 Console.WriteLine("Error, robot has fallen off");
                 return;
-            }
+            } 
+
             IsOffTable = false;
             Position = new Tuple<int, int>(newXCoord, newYCoord);
             FacingPosition = facingEnum;
